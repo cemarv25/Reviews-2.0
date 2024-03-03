@@ -9,12 +9,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark w-full h-full">
-      <ThemeProvider>
-        <body className="w-full h-full">
+      <body className="w-full h-full">
+        <ThemeProvider>
           <Header />
           {children}
-        </body>
-      </ThemeProvider>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

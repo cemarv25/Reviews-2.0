@@ -51,9 +51,11 @@ const Header = () => {
           </Button>
         </NavbarItem>
         <NavbarItem>
-          <Button variant="ghost" color="primary">
-            Register
-          </Button>
+          <Link href="/register" as={NextLink}>
+            <Button variant="ghost" color="primary">
+              Register
+            </Button>
+          </Link>
         </NavbarItem>
       </NavbarContent>
     </Navbar>
