@@ -1,5 +1,5 @@
 'use client';
-import { ReactNode, createContext, useMemo, useState } from 'react';
+import { ReactNode, createContext, useContext, useMemo, useState } from 'react';
 import { NextUIProvider } from '@nextui-org/react';
 
 export const ThemeContext = createContext({
@@ -7,7 +7,7 @@ export const ThemeContext = createContext({
   toggleTheme: () => {},
 });
 
-const ThemeProvider = ({ children }: { children: ReactNode }) => {
+export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
 
   const toggleTheme = () => {
@@ -29,4 +29,8 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export default ThemeProvider;
+export const useTheme = () => {
+  const theme = useContext(ThemeContext);
+
+  return theme;
+};

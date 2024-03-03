@@ -5,16 +5,20 @@ import Input from '../input';
 import FormCTA from './formCTA';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { useAuth } from '@/contexts/auth';
 
 const LoginForm = () => {
   const router = useRouter();
+  const { setUser } = useAuth();
   const [state, formAction] = useFormState(login, {
     message: null,
+    data: null,
   });
 
   useEffect(() => {
     if (state.message === 'User logged in successfully!') {
       router.push('/');
+      setUser(state.data.user);
     }
   }, [state]);
 

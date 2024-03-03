@@ -8,8 +8,8 @@ import {
   NavbarContent,
   NavbarItem,
   Link,
-  Button,
 } from '@nextui-org/react';
+import AuthButtons from './AuthButtons';
 
 const Header = () => {
   const pathname = usePathname();
@@ -44,22 +44,7 @@ const Header = () => {
           </Link>
         </NavbarItem>
       </NavbarContent>
-      <NavbarContent>
-        <NavbarItem>
-          <Link href="/login" as={NextLink}>
-            <Button variant="light" color="primary">
-              Log In
-            </Button>
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link href="/register" as={NextLink}>
-            <Button variant="ghost" color="primary">
-              Register
-            </Button>
-          </Link>
-        </NavbarItem>
-      </NavbarContent>
+      <AuthButtons />
     </Navbar>
   );
 };
