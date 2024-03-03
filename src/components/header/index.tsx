@@ -46,9 +46,11 @@ const Header = () => {
       </NavbarContent>
       <NavbarContent>
         <NavbarItem>
-          <Button variant="light" color="primary">
-            Log In
-          </Button>
+          <Link href="/login" as={NextLink}>
+            <Button variant="light" color="primary">
+              Log In
+            </Button>
+          </Link>
         </NavbarItem>
         <NavbarItem>
           <Link href="/register" as={NextLink}>
