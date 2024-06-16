@@ -5,10 +5,13 @@ import { calculateGradeTextColor } from '@/utils';
 import {
   Card,
   CardHeader,
-  CardBody,
-  Chip,
+  CardContent,
+  CardTitle,
+  CardDescription,
   CardFooter,
-} from '@nextui-org/react';
+} from '@/ui/Card';
+import { Badge } from '@/ui/Badge';
+import { cn } from '@/lib/utils';
 
 type RestaurantCardProps = {
   restaurant: Restaurant;
@@ -21,15 +24,15 @@ const RestaurantCard = ({ restaurant }: RestaurantCardProps) => {
   return (
     <Card>
       <CardHeader className="flex justify-between">
-        <h2 className="text-lg font-bold">{name}</h2>
-        <p className="text-slate-500">
-          <span className={gradeTextColor}>{grade}</span> / 100
-        </p>
+        <CardTitle className="text-lg font-bold">{name}</CardTitle>
+        <CardDescription className={cn('text-slate-500', gradeTextColor)}>
+          {grade} / 100
+        </CardDescription>
       </CardHeader>
-      <CardBody>{description}</CardBody>
+      <CardContent>{description}</CardContent>
       <CardFooter className="flex gap-2">
-        <Chip>{food_type}</Chip>
-        <Chip>{formality}</Chip>
+        <Badge>{food_type}</Badge>
+        <Badge>{formality}</Badge>
       </CardFooter>
     </Card>
   );
