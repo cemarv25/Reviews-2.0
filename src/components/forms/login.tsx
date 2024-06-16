@@ -1,7 +1,7 @@
 'use client';
 import { login } from '@/api/auth/login';
-import { useFormState } from 'react-dom';
-import Input from '../input';
+import { useActionState } from 'react';
+import Input from '../ui/Input';
 import FormCTA from './formCTA';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
@@ -10,22 +10,24 @@ import { useAuth } from '@/contexts/auth';
 const LoginForm = () => {
   const router = useRouter();
   const { setUser } = useAuth();
-  const [state, formAction] = useFormState(login, {
-    message: null,
+  const [state, formAction] = useActionState(login, {
+    message: '',
     data: null,
   });
 
   useEffect(() => {
-    if (state.message === 'User logged in successfully!') {
+    if (state?.message === 'User logged in successfully!') {
       router.push('/');
-      setUser(state.data.user);
+      if (state.data && state.data.user) {
+        setUser(state.data.user);
+      }
     }
   }, [state]);
 
   return (
     <form
       action={formAction}
-      className="flex flex-col box-border bg-content1 shadow-medium rounded-large"
+      className="flex flex-col box-border border-zinc-500 rounded-lg"
     >
       <h1 className="flex w-full justify-start items-center rounded-t-large p-5">
         Welcome back! Login with your credentials

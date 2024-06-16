@@ -1,6 +1,5 @@
 'use client';
 import { ReactNode, createContext, useContext, useMemo, useState } from 'react';
-import { NextUIProvider } from '@nextui-org/react';
 
 export const ThemeContext = createContext({
   theme: 'dark',
@@ -24,7 +23,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   );
   return (
     <ThemeContext.Provider value={themeObject}>
-      <NextUIProvider>{children}</NextUIProvider>
+      {children}
     </ThemeContext.Provider>
   );
 };

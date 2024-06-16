@@ -1,11 +1,11 @@
 'use client';
 
 import { createRestaurant } from '@/api/data/restaurants/createRestaurant';
-import { useFormState } from 'react-dom';
-import Input from '../input';
+import { useActionState } from 'react';
+import Input from '../ui/Input';
 import FormCTA from './formCTA';
 import { useEffect, useState } from 'react';
-import Select from '../select';
+import Select from '../ui/Select';
 import { useRouter } from 'next/navigation';
 
 const formalities = [
@@ -25,10 +25,10 @@ const CreateRestaurantForm = () => {
   const router = useRouter();
   const [formality, setFormality] = useState('');
   const [type, setType] = useState('');
-  const [state, formAction] = useFormState(createRestaurant, {});
+  const [state, formAction] = useActionState(createRestaurant, { message: '' });
 
   useEffect(() => {
-    if (state.message === 'Restaurant created successfully!') {
+    if (state?.message === 'Restaurant created successfully!') {
       router.push('/restaurants');
     }
   }, [state]);
