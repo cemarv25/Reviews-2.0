@@ -4,8 +4,14 @@ import { createRestaurant } from '@/api/data/restaurants/createRestaurant';
 import { useActionState } from 'react';
 import Input from '../ui/Input';
 import FormCTA from './formCTA';
-import { useEffect, useState } from 'react';
-import Select from '../ui/Select';
+import { useEffect } from 'react';
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from '../ui/Select';
 import { useRouter } from 'next/navigation';
 
 const formalities = [
@@ -23,8 +29,6 @@ const foodTypes = [
 
 const CreateRestaurantForm = () => {
   const router = useRouter();
-  const [formality, setFormality] = useState('');
-  const [type, setType] = useState('');
   const [state, formAction] = useActionState(createRestaurant, { message: '' });
 
   useEffect(() => {
@@ -56,24 +60,26 @@ const CreateRestaurantForm = () => {
           labelId="description-label"
           name="description"
         />
-        <Select
-          name="formality"
-          label="Restaurant formality"
-          options={formalities}
-          placeholder="Select a formality"
-          value={formality}
-          onSelectionChange={(e) => setFormality(e.target.value)}
-          className="w-full h-full font-normal !bg-transparent outline-none placeholder:text-foreground-500 text-small"
-        />
-        <Select
-          name="type"
-          label="Food type"
-          options={foodTypes}
-          placeholder="Select a food type"
-          value={type}
-          onSelectionChange={(e) => setType(e.target.value)}
-          className="w-full h-full font-normal !bg-transparent outline-none placeholder:text-foreground-500 text-small"
-        />
+        <Select name="formality">
+          <SelectTrigger>
+            <SelectValue placeholder="Restaurant formality" />
+          </SelectTrigger>
+          <SelectContent>
+            {formalities.map((formality) => (
+              <SelectItem value={formality.value}>{formality.label}</SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+        <Select name="type">
+          <SelectTrigger>
+            <SelectValue placeholder="Food type" />
+          </SelectTrigger>
+          <SelectContent>
+            {foodTypes.map((type) => (
+              <SelectItem value={type.value}>{type.label}</SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
       </fieldset>
       <section className="h-auto flex w-full items-center rounded-b-large p-5">
         <FormCTA text="Create" />

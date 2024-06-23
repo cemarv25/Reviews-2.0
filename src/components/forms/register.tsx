@@ -1,19 +1,19 @@
 'use client';
 import { register } from '@/api/auth/register';
-import { useFormState } from 'react-dom';
-import Input from '../input';
+import { useActionState } from 'react';
+import Input from '../ui/Input';
 import FormCTA from './formCTA';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 const RegisterForm = () => {
   const router = useRouter();
-  const [state, formAction] = useFormState(register, {
-    message: null,
+  const [state, formAction] = useActionState(register, {
+    message: '',
   });
 
   useEffect(() => {
-    if (state.message === 'User created successfully!') {
+    if (state?.message === 'User created successfully!') {
       router.push('/');
     }
   }, [state]);
