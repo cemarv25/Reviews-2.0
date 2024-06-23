@@ -1,22 +1,16 @@
 'use client';
 
-import NextLink from 'next/link';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
-  Link,
-} from '@nextui-org/react';
 import AuthButtons from './AuthButtons';
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from './Navbar';
 
 const Header = () => {
   const pathname = usePathname();
   return (
     <Navbar isBordered className="py-2">
       <NavbarBrand>
-        <Link href="/" as={NextLink} className="font-bold text-4xl">
+        <Link href="/" className="font-bold text-4xl">
           Reviews
         </Link>
       </NavbarBrand>
@@ -24,10 +18,11 @@ const Header = () => {
         <NavbarItem>
           <Link
             href="/restaurants"
-            size="lg"
-            as={NextLink}
-            underline={pathname === '/restaurants' ? 'always' : 'none'}
-            isBlock
+            className={`text-2xl underline decoration-transparent  transition-colors ${
+              pathname.includes('/restaurants')
+                ? 'text-primary hover:decoration-primary'
+                : 'hover:decoration-primary-foreground'
+            } `}
           >
             Restaurants
           </Link>
@@ -35,10 +30,11 @@ const Header = () => {
         <NavbarItem>
           <Link
             href="/dishes"
-            size="lg"
-            as={NextLink}
-            underline={pathname === '/dishes' ? 'always' : 'none'}
-            isBlock
+            className={`text-2xl underline decoration-transparent  transition-colors ${
+              pathname.includes('/dishes')
+                ? 'text-primary hover:decoration-primary'
+                : 'hover:decoration-primary-foreground'
+            } `}
           >
             Dishes
           </Link>

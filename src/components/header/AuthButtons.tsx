@@ -1,19 +1,17 @@
 'use client';
 
 import { useAuth } from '@/contexts/auth';
+import Link from 'next/link';
+import LoadingSpinner from '@/ui/LoadingSpinner';
+import Button from '@/ui/Button';
 import {
-  Button,
-  Link,
-  NavbarContent,
-  NavbarItem,
-  Spinner,
-  Dropdown,
-  DropdownTrigger,
   DropdownMenu,
-  DropdownItem,
-} from '@nextui-org/react';
-import NextLink from 'next/link';
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/ui/DropdownMenu';
 import { useRouter } from 'next/navigation';
+import { NavbarContent, NavbarItem } from '@/components/header/Navbar';
 
 const LoggedInButtons = () => {
   const { logout } = useAuth();
@@ -25,27 +23,23 @@ const LoggedInButtons = () => {
   };
 
   return (
-    <Dropdown>
+    <DropdownMenu>
       <NavbarItem>
-        <DropdownTrigger>
-          <Button variant="light" color="primary">
-            User
-          </Button>
-        </DropdownTrigger>
+        <DropdownMenuTrigger>
+          <Button size="sm">User</Button>
+        </DropdownMenuTrigger>
       </NavbarItem>
-      <DropdownMenu aria-label="Profile Actions">
-        <DropdownItem textValue="Go to your Profile">
-          <Link href="/profile" as={NextLink}>
-            Go to your Profile
-          </Link>
-        </DropdownItem>
-        <DropdownItem textValue="Log out ">
-          <Button variant="ghost" color="primary" onClick={handleLogout}>
+      <DropdownMenuContent aria-label="Profile Actions">
+        <DropdownMenuItem textValue="Go to your Profile">
+          <Link href="/profile">Go to your Profile</Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem textValue="Log out ">
+          <Button variant="ghost" size="sm" onClick={handleLogout}>
             Log Out
           </Button>
-        </DropdownItem>
-      </DropdownMenu>
-    </Dropdown>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 };
 
@@ -53,17 +47,13 @@ const LoggedOutButtons = () => {
   return (
     <>
       <NavbarItem>
-        <Link href="/login" as={NextLink}>
-          <Button variant="light" color="primary">
-            Log In
-          </Button>
+        <Link href="/login">
+          <Button>Log In</Button>
         </Link>
       </NavbarItem>
       <NavbarItem>
-        <Link href="/register" as={NextLink}>
-          <Button variant="ghost" color="primary">
-            Register
-          </Button>
+        <Link href="/register">
+          <Button variant="ghost">Register</Button>
         </Link>
       </NavbarItem>
     </>
@@ -73,8 +63,8 @@ const LoggedOutButtons = () => {
 const AuthButtons = () => {
   const { user, loading } = useAuth();
   return (
-    <NavbarContent justify="end">
-      {loading && <Spinner />}
+    <NavbarContent className="justify-end">
+      {loading && <LoadingSpinner />}
       {!loading && !user && <LoggedOutButtons />}
       {!loading && user && <LoggedInButtons />}
     </NavbarContent>
