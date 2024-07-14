@@ -1,6 +1,7 @@
 'use server';
 
 import RestaurantCard from '@/components/restaurants/RestaurantCard';
+import Title from '@/components/ui/Title';
 import { Restaurant } from '@/types/tables';
 import { createClient } from '@/utils/supabase/server';
 
@@ -12,8 +13,8 @@ const Restaurants = async () => {
     .select()
     .returns<Restaurant[]>();
   return (
-    <div className="p-10 lg:px-32 lg:py-10">
-      <h1 className="text-2xl font-bold">Restaurants</h1>
+    <>
+      <Title text="Restaurants" />
       <p className="py-10 text-lg">
         Take a look at the Restaurants that have been reviewed!
       </p>
@@ -22,7 +23,7 @@ const Restaurants = async () => {
           <RestaurantCard key={restaurant.id} restaurant={restaurant} />
         ))}
       </main>
-    </div>
+    </>
   );
 };
 
