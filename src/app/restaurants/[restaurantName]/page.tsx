@@ -1,10 +1,10 @@
 'use server';
 
-import Title from '@/components/ui/Title';
+import RestaurantDetails from '@/components/restaurants/details/RestaurantDetails';
 import { Restaurant } from '@/types/tables';
 import { createClient } from '@/utils/supabase/server';
 
-const RestaurantDetails = async ({
+const RestaurantDetailsPage = async ({
   params,
 }: {
   params: { restaurantName: string };
@@ -25,11 +25,7 @@ const RestaurantDetails = async ({
     );
   }
 
-  return (
-    <>
-      <Title text={restaurant.name} />
-    </>
-  );
+  return <RestaurantDetails restaurant={restaurant} />;
 };
 
-export default RestaurantDetails;
+export default RestaurantDetailsPage;
