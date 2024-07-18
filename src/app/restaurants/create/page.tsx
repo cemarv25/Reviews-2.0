@@ -3,11 +3,7 @@
 import CreateRestaurantForm from '@/components/forms/createRestaurant';
 
 const CreateRestaurant = async () => {
-  return (
-    <div className="p-10 lg:px-32 lg:py-10">
-      <CreateRestaurantForm />
-    </div>
-  );
+  return <CreateRestaurantForm />;
 };
 
 export default CreateRestaurant;

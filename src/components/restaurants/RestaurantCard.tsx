@@ -3,7 +3,7 @@
 import { Restaurant } from '@/types/tables';
 import { calculateGradeTextColor } from '@/utils';
 import {
-  Card,
+  CardLink,
   CardHeader,
   CardContent,
   CardTitle,
@@ -19,10 +19,10 @@ type RestaurantCardProps = {
 
 const RestaurantCard = ({ restaurant }: RestaurantCardProps) => {
   const gradeTextColor = calculateGradeTextColor(restaurant.grade ?? 0);
-  const { name, grade, description, food_type, formality } = restaurant;
+  const { name, grade, description, food_type, formality, id } = restaurant;
 
   return (
-    <Card>
+    <CardLink linkProps={{ href: `/restaurants/${name}` }}>
       <CardHeader className="flex justify-between">
         <CardTitle className="text-lg font-bold">{name}</CardTitle>
         <CardDescription className={cn('text-slate-500', gradeTextColor)}>
@@ -34,7 +34,7 @@ const RestaurantCard = ({ restaurant }: RestaurantCardProps) => {
         <Badge>{food_type}</Badge>
         <Badge>{formality}</Badge>
       </CardFooter>
-    </Card>
+    </CardLink>
   );
 };
 
