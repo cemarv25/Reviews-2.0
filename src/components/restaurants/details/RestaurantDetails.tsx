@@ -29,7 +29,7 @@ const RestaurantDetails = ({ restaurant }: RestaurantDetailsProps) => {
         <AttributeList {...otherAttributes} />
       </div>
       <div className="w-full h-[1px] bg-gray-700 my-3" />
-      <RestaurantReviewHistory />
+      <RestaurantReviewHistory restaurantName={restaurant.name} />
     </>
   );
 };
