@@ -11,6 +11,7 @@ export type Database = {
     Tables: {
       restaurant_reviews: {
         Row: {
+          comment: string | null;
           cost: number | null;
           created_at: string | null;
           id: string;
@@ -22,6 +23,7 @@ export type Database = {
           variety: number | null;
         };
         Insert: {
+          comment?: string | null;
           cost?: number | null;
           created_at?: string | null;
           id?: string;
@@ -33,6 +35,7 @@ export type Database = {
           variety?: number | null;
         };
         Update: {
+          comment?: string | null;
           cost?: number | null;
           created_at?: string | null;
           id?: string;

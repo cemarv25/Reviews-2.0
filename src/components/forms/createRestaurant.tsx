@@ -1,10 +1,9 @@
 'use client';
 
 import { createRestaurant } from '@/api/data/restaurants/createRestaurant';
-import { useActionState } from 'react';
+import { useActionState, useEffect } from 'react';
 import Input from '../ui/Input';
 import FormCTA from './formCTA';
-import { useEffect } from 'react';
 import {
   Select,
   SelectTrigger,
@@ -66,7 +65,9 @@ const CreateRestaurantForm = () => {
           </SelectTrigger>
           <SelectContent>
             {formalities.map((formality) => (
-              <SelectItem value={formality.value}>{formality.label}</SelectItem>
+              <SelectItem key={formality.value} value={formality.value}>
+                {formality.label}
+              </SelectItem>
             ))}
           </SelectContent>
         </Select>
@@ -76,7 +77,9 @@ const CreateRestaurantForm = () => {
           </SelectTrigger>
           <SelectContent>
             {foodTypes.map((type) => (
-              <SelectItem value={type.value}>{type.label}</SelectItem>
+              <SelectItem key={type.value} value={type.value}>
+                {type.label}
+              </SelectItem>
             ))}
           </SelectContent>
         </Select>
