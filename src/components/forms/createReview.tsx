@@ -7,6 +7,7 @@ import { createReview } from '@/api/data/reviews/createReview';
 import FormCTA from './formCTA';
 import FormSlider from './formSlider';
 import FormTextarea from './formTextArea';
+import Input from '../ui/Input';
 
 type CreateReviewFormProps = {
   restaurants: string[];
@@ -45,6 +46,11 @@ const CreateReviewForm = ({ restaurants }: CreateReviewFormProps) => {
           label="Restaurant"
           placeholder="Choose a restaurant"
           name="restaurant"
+        />
+        <Input
+          label="Review Title"
+          name="title"
+          placeholder="Your review in as few words as possible..."
         />
         <FormSlider
           defaultValue={[50]}
@@ -116,6 +122,7 @@ const CreateReviewForm = ({ restaurants }: CreateReviewFormProps) => {
           label="Comments"
           placeholder="Type your comments here :)"
           name="comment"
+          required
         />
       </fieldset>
       <section className="flex items-center p-5 rounded-b-large w-full h-auto">
