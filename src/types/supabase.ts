@@ -19,6 +19,7 @@ export type Database = {
           restaurantId: string;
           service: number | null;
           taste: number | null;
+          title: string;
           value: number | null;
           variety: number | null;
         };
@@ -31,6 +32,7 @@ export type Database = {
           restaurantId: string;
           service?: number | null;
           taste?: number | null;
+          title?: string;
           value?: number | null;
           variety?: number | null;
         };
@@ -43,6 +45,7 @@ export type Database = {
           restaurantId?: string;
           service?: number | null;
           taste?: number | null;
+          title?: string;
           value?: number | null;
           variety?: number | null;
         };

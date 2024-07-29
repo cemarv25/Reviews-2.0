@@ -23,8 +23,8 @@ const RestaurantCard = ({ restaurant }: RestaurantCardProps) => {
 
   return (
     <CardLink linkProps={{ href: `/restaurants/${name}` }}>
-      <CardHeader className="flex justify-between">
-        <CardTitle className="text-lg font-bold">{name}</CardTitle>
+      <CardHeader className="flex flex-row justify-between">
+        <CardTitle className="font-bold text-lg">{name}</CardTitle>
         <CardDescription className={cn('text-slate-500', gradeTextColor)}>
           {grade} / 100
         </CardDescription>
