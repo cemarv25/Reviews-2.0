@@ -17,6 +17,8 @@ const FormSlider = ({
   inputRef,
   name,
   labelStyles,
+  max,
+  min,
   ...props
 }: FormSliderProps) => {
   const [value, setValue] = useState(props.defaultValue?.[0] ?? 0);
@@ -42,6 +44,8 @@ const FormSlider = ({
             id={name}
             onChange={(e) => setValue(parseInt(e.target.value))}
             type="number"
+            max={max}
+            min={min}
             className="!bg-transparent w-full font-base text-small placeholder:text-foreground-500 outline-none"
           />
         </div>
@@ -49,6 +53,8 @@ const FormSlider = ({
       <Slider
         value={[value]}
         onValueChange={(value) => setValue(value[0])}
+        max={max}
+        min={min}
         {...props}
       />
       {withRightValue && (
@@ -59,6 +65,8 @@ const FormSlider = ({
             id={name}
             onChange={(e) => setValue(parseInt(e.target.value))}
             type="number"
+            max={max}
+            min={min}
             className="!bg-transparent w-full font-base text-small placeholder:text-foreground-500 outline-none"
           />
         </div>

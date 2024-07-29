@@ -22,14 +22,17 @@ const RestaurantDetails = ({ restaurant }: RestaurantDetailsProps) => {
           {grade}
         </p>
       </div>
-      <div className="w-full h-[1px] bg-gray-700 my-3" />
-      <div className="flex gap-3 items-stretch min-h-[50vh]">
+      <div className="bg-gray-700 my-3 w-full h-[1px]" />
+      <div className="flex items-stretch gap-3 min-h-[50vh]">
         <p className="w-3/4">{description}</p>
-        <div className="w-[1px] bg-gray-700" />
+        <div className="bg-gray-700 w-[1px]" />
         <AttributeList {...otherAttributes} />
       </div>
-      <div className="w-full h-[1px] bg-gray-700 my-3" />
-      <RestaurantReviewHistory restaurantName={restaurant.name} />
+      <div className="bg-gray-700 my-3 w-full h-[1px]" />
+      <RestaurantReviewHistory
+        restaurantName={restaurant.name}
+        restaurantId={restaurant.id}
+      />
     </>
   );
 };
