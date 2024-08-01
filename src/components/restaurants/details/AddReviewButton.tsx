@@ -1,3 +1,5 @@
+'use client';
+import { useAuth } from '@/contexts/auth';
 import AddIcon from '@/icons/Add';
 import Link from 'next/link';
 
@@ -6,6 +8,11 @@ type AddReviewButtonProps = {
 };
 
 const AddReviewButton = ({ restaurantName }: AddReviewButtonProps) => {
+  const { user } = useAuth();
+  if (!user) {
+    return null;
+  }
+
   const url = `/reviews/create?restaurant=${encodeURIComponent(
     restaurantName
   )}`;
