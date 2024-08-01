@@ -1,5 +1,6 @@
 'use server';
 
+import CreateRestaurantButton from '@/components/restaurants/CreateRestaurantButton';
 import RestaurantCard from '@/components/restaurants/RestaurantCard';
 import Title from '@/components/ui/Title';
 import { Restaurant } from '@/types/tables';
@@ -15,10 +16,13 @@ const Restaurants = async () => {
   return (
     <>
       <Title text="Restaurants" />
-      <p className="py-10 text-lg">
-        Take a look at the Restaurants that have been reviewed!
-      </p>
-      <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+      <div className="flex justify-between items-center">
+        <p className="py-10 text-lg">
+          Take a look at the Restaurants that have been reviewed!
+        </p>
+        <CreateRestaurantButton />
+      </div>
+      <main className="gap-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {restaurants?.map((restaurant) => (
           <RestaurantCard key={restaurant.id} restaurant={restaurant} />
         ))}

@@ -33,7 +33,7 @@ const RestaurantReviewHistory = async ({
         </div>
         <AddReviewButton restaurantName={restaurantName} />
       </div>
-      <div className="gap-3 grid grid-cols-3 my-3">
+      <div className="gap-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-3">
         {reviewsData.map((review) => (
           <ReviewCard key={review.id} {...review} />
         ))}
