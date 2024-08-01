@@ -63,12 +63,17 @@ export async function middleware(request: NextRequest) {
   const isCreateRestaurantPage = request.nextUrl.pathname.startsWith(
     '/restaurants/create'
   );
+  const isCreateReviewPage =
+    request.nextUrl.pathname.startsWith('/reviews/create');
 
   if ((isLoginPage || isRegisterPage) && user) {
     return NextResponse.redirect(new URL('/', request.url));
   }
 
-  if ((isProfilePage || isCreateRestaurantPage) && !user) {
+  if (
+    (isProfilePage || isCreateRestaurantPage || isCreateReviewPage) &&
+    !user
+  ) {
     return NextResponse.redirect(new URL('/', request.url));
   }
 
