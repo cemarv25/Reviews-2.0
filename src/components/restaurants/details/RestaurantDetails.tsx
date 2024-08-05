@@ -7,7 +7,7 @@ import { calculateGradeTextColor } from '@/utils';
 import RestaurantReviewHistory from './ReviewHistory';
 import AttributeList from './AttributeList';
 import { Suspense } from 'react';
-import ReviewHistorySkeleton from '@/components/ui/icons/skeletons/ReviewHistorySkeleton';
+import ReviewHistorySkeleton from '@/components/ui/skeletons/ReviewHistorySkeleton';
 
 type RestaurantDetailsProps = {
   restaurant: Restaurant;

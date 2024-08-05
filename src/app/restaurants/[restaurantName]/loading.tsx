@@ -1,4 +1,4 @@
-import ReviewHistorySkeleton from '@/components/ui/icons/skeletons/ReviewHistorySkeleton';
+import ReviewHistorySkeleton from '@/components/ui/skeletons/ReviewHistorySkeleton';
 import { Skeleton } from '@/components/ui/Skeleton';
 
 const RestaurantDetailsSkeleton = () => {
