@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
 
 const useIsMobile = (mobileScreenSize = 768) => {
-  if (typeof window.matchMedia !== 'function') {
+  if (window != null && typeof window?.matchMedia !== 'function') {
     throw Error('matchMedia not supported by browser!');
   }
   const [isMobile, setIsMobile] = useState(
-    window.matchMedia(`(max-width: ${mobileScreenSize}px)`).matches
+    window?.matchMedia(`(max-width: ${mobileScreenSize}px)`).matches ?? false
   );
 
   const checkIsMobile = useCallback((event: MediaQueryListEvent) => {
@@ -13,7 +13,7 @@ const useIsMobile = (mobileScreenSize = 768) => {
   }, []);
 
   useEffect(() => {
-    const mediaListener = window.matchMedia(
+    const mediaListener = window?.matchMedia(
       `(max-width: ${mobileScreenSize}px)`
     );
     // try catch used to fallback for browser compatibility
