@@ -1,4 +1,3 @@
-'use server';
 import LoginForm from '@/components/forms/login';
 import { Metadata } from 'next';
 

@@ -1,4 +1,3 @@
-'use server';
 import RegisterForm from '@/components/forms/register';
 import { Metadata } from 'next';
 
