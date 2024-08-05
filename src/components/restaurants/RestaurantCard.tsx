@@ -19,7 +19,7 @@ type RestaurantCardProps = {
 
 const RestaurantCard = ({ restaurant }: RestaurantCardProps) => {
   const gradeTextColor = calculateGradeTextColor(restaurant.grade ?? 0);
-  const { name, grade, description, food_type, formality, id } = restaurant;
+  const { name, grade, description, food_type, formality } = restaurant;
 
   return (
     <CardLink

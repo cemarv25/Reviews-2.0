@@ -1,7 +1,5 @@
 'use server';
 
-import { HTMLAttributes } from 'react';
-
 const Title = ({
   text,
   customClasses,

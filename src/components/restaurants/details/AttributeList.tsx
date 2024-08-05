@@ -10,7 +10,6 @@ const AttributeList = ({
   place_avg,
   variety_avg,
   value_avg,
-  location,
 }: AttributeListProps) => {
   return (
     <ul className="flex flex-col gap-3 w-1/6">
