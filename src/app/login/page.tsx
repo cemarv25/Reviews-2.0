@@ -2,7 +2,7 @@ import LoginForm from '@/components/forms/login';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Login | Reviews',
+  title: 'Login',
   description: 'Login at Reviews!',
 };
 

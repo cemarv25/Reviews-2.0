@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Dishes | Reviews',
+  title: 'Dishes',
   description: 'See all dishes that have been reviewed.',
 };
 
