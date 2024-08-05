@@ -12,6 +12,8 @@ import {
 } from '@/ui/DropdownMenu';
 import { useRouter } from 'next/navigation';
 import { NavbarContent, NavbarItem } from '@/components/header/Navbar';
+import useIsMobile from '@/hooks/useIsMobile';
+import { cn } from '@/lib/utils';
 
 const LoggedInButtons = () => {
   const { logout } = useAuth();
@@ -60,13 +62,60 @@ const LoggedOutButtons = () => {
   );
 };
 
-const AuthButtons = () => {
-  const { user, loading } = useAuth();
+const MobileAuthButtons = () => {
+  const { user, loading, logout } = useAuth();
+  const isMobile = useIsMobile();
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    await logout();
+    router.refresh();
+  };
+
+  if (!isMobile) {
+    return null;
+  }
+
   return (
-    <NavbarContent className="justify-end">
-      {loading && <LoadingSpinner />}
+    <>
       {!loading && !user && <LoggedOutButtons />}
-      {!loading && user && <LoggedInButtons />}
+      {!loading && user && (
+        <>
+          <NavbarItem>
+            <Link href="/profile">Go to your Profile</Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Button size="sm" onClick={handleLogout}>
+              Log Out
+            </Button>
+          </NavbarItem>
+        </>
+      )}
+    </>
+  );
+};
+
+const DesktopAuthButtons = () => {
+  const { user, loading } = useAuth();
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return null;
+  }
+
+  return (
+    <>
+      {!isMobile && loading && <LoadingSpinner />}
+      {!isMobile && !loading && !user && <LoggedOutButtons />}
+      {!isMobile && !loading && user && <LoggedInButtons />}
+    </>
+  );
+};
+
+const AuthButtons = ({ className }: { className: string }) => {
+  return (
+    <NavbarContent className={cn('justify-end', className)}>
+      <MobileAuthButtons />
+      <DesktopAuthButtons />
     </NavbarContent>
   );
 };

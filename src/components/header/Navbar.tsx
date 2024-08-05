@@ -1,10 +1,12 @@
+import { cn } from '@/lib/utils';
+
 type NavbarBrandProps = {
   children: React.ReactNode;
 };
 
 export const NavbarBrand = ({ children }: NavbarBrandProps) => {
   return (
-    <div className="flex basis-0 flex-row flex-nowrap justify-start bg-transparent items-center no-underline text-medium whitespace-nowrap box-border">
+    <div className="box-border flex flex-row flex-nowrap justify-start items-center bg-transparent text-medium no-underline whitespace-nowrap basis-0">
       {children}
     </div>
   );
@@ -18,7 +20,10 @@ type NavbarContentProps = {
 export const NavbarContent = ({ className, children }: NavbarContentProps) => {
   return (
     <ul
-      className={`h-full flex-row flex-nowrap items-center data-[justify=start]:justify-start data-[justify=start]:flex-grow data-[justify=start]:basis-0 data-[justify=center]:justify-center data-[justify=end]:justify-end data-[justify=end]:flex-grow data-[justify=end]:basis-0 hidden sm:flex gap-4 ${className}`}
+      className={cn(
+        'h-full flex-row flex-nowrap items-center data-[justify=start]:justify-start data-[justify=start]:flex-grow data-[justify=start]:basis-0 data-[justify=center]:justify-center data-[justify=end]:justify-end data-[justify=end]:flex-grow data-[justify=end]:basis-0 gap-4',
+        className
+      )}
     >
       {children}
     </ul>
@@ -31,7 +36,7 @@ type NavbarItemProps = {
 
 export const NavbarItem = ({ children }: NavbarItemProps) => {
   return (
-    <li className="text-medium whitespace-nowrap box-border list-none data-[active=true]:font-semibold">
+    <li className="box-border data-[active=true]:font-semibold text-medium whitespace-nowrap list-none">
       {children}
     </li>
   );
@@ -46,11 +51,13 @@ type NavbarProps = {
 export const Navbar = ({ isBordered, className, children }: NavbarProps) => {
   return (
     <nav
-      className={`z-40 w-full h-auto flex justify-center sticky top-0 inset-x-0 backdrop-blur-lg backdrop-saturate-150 bg-background/70 ${
-        isBordered ? 'border-b border-divider' : ''
-      } ${className}`}
+      className={cn(
+        'z-40 w-full h-auto flex justify-center sticky top-0 inset-x-0 backdrop-blur-lg backdrop-saturate-150 bg-background/70',
+        isBordered && 'border-b border-divider',
+        className
+      )}
     >
-      <header className="z-40 flex px-6 gap-4 w-full flex-row relative flex-nowrap items-center justify-between h-[var(--navbar-height)] max-w-[1024px]">
+      <header className="relative z-40 flex flex-row flex-nowrap justify-between items-center gap-4 px-6 w-full max-w-[1024px] h-[var(--navbar-height)]">
         {children}
       </header>
     </nav>

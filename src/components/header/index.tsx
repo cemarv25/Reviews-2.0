@@ -4,17 +4,20 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import AuthButtons from './AuthButtons';
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from './Navbar';
+import MobileNavbarContent from './MobileNavbarContent';
+import useIsMobile from '@/hooks/useIsMobile';
 
-const Header = () => {
+const DesktopNavbarContent = () => {
   const pathname = usePathname();
+  const isMobile = useIsMobile();
+
+  if (isMobile) {
+    return null;
+  }
+
   return (
-    <Navbar isBordered className="py-2">
-      <NavbarBrand>
-        <Link href="/" className="font-bold text-4xl">
-          Reviews
-        </Link>
-      </NavbarBrand>
-      <NavbarContent>
+    <>
+      <NavbarContent className="sm:flex hidden">
         <NavbarItem>
           <Link
             href="/restaurants"
@@ -40,9 +43,21 @@ const Header = () => {
           </Link>
         </NavbarItem>
       </NavbarContent>
-      <AuthButtons />
-    </Navbar>
+      <AuthButtons className="sm:flex hidden" />
+    </>
   );
 };
+
+const Header = () => (
+  <Navbar isBordered className="py-2">
+    <NavbarBrand>
+      <Link href="/" className="font-bold text-4xl">
+        Reviews
+      </Link>
+    </NavbarBrand>
+    <DesktopNavbarContent />
+    <MobileNavbarContent />
+  </Navbar>
+);
 
 export default Header;
