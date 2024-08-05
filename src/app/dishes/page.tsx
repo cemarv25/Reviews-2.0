@@ -1,3 +1,10 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Dishes | Reviews',
+  description: 'See all dishes that have been reviewed.',
+};
+
 const Dishes = () => {
   return (
     <>

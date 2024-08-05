@@ -2,9 +2,8 @@ import CreateReviewForm from '@/components/forms/createReview';
 import { Restaurant } from '@/types/tables';
 import { createClient } from '@/utils/supabase/server';
 
-const supabase = createClient();
-
 const CreateReview = async () => {
+  const supabase = createClient();
   const { data: restaurants } = await supabase
     .from('restaurants')
     .select()

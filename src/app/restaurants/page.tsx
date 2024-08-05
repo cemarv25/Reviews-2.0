@@ -6,9 +6,8 @@ import Title from '@/components/ui/Title';
 import { Restaurant } from '@/types/tables';
 import { createClient } from '@/utils/supabase/server';
 
-const supabase = createClient();
-
 const Restaurants = async () => {
+  const supabase = createClient();
   const { data: restaurants } = await supabase
     .from('restaurants')
     .select()

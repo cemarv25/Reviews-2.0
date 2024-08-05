@@ -4,6 +4,7 @@ import Button from '@/components/ui/Button';
 import Link from 'next/link';
 import { useEffect } from 'react';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Error = ({ error, reset }: { error: Error; reset: () => void }) => {
   useEffect(() => {
     console.log({ error });
@@ -11,7 +12,7 @@ const Error = ({ error, reset }: { error: Error; reset: () => void }) => {
 
   return (
     <>
-      <h1 className="text-5xl mb-5">Oops!</h1>
+      <h1 className="mb-5 text-5xl">Oops!</h1>
       <p>Something went wrong!</p>
       <p>{error.message}</p>
       <Button variant="link" className="p-0">

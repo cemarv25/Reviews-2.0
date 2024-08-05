@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .testclass {
-  color: hsl(210, 40%, 96.1%);
+  color: hsl(209, 77%, 10%);
   background-color: hsl(240, 4%, 16%);
 }
 
@@ -68,6 +68,10 @@
     --border: 240 4% 16%;
     --input: 240 6% 10%;
     --ring: 212.7 26.8% 83.9%;
+
+    --skeleton-text: 0 0% 15%;
+    --skeleton-button: 210, 60%, 10%;
+    --skeleton-card: 210 80% 5%;
   }
 }
 

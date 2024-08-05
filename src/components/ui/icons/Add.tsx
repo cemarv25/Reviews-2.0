@@ -43,12 +43,11 @@ type AddIconProps = {
 } & SVGProps<SVGSVGElement>;
 
 const AddIcon = ({ type, ...rest }: AddIconProps) => {
-  switch (type) {
-    case 'filled':
-      return <AddFilled {...rest} />;
-    case 'outlined':
-      return <AddOutlined {...rest} />;
+  if (type === 'filled') {
+    return <AddFilled {...rest} />;
   }
+
+  return <AddOutlined {...rest} />;
 };
 
 export default AddIcon;

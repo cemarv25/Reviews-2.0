@@ -1,9 +1,14 @@
-'use server';
 import LoginForm from '@/components/forms/login';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Login | Reviews',
+  description: 'Login at Reviews!',
+};
 
 const Login = async () => {
   return (
-    <div className="p-10 lg:px-32 lg:py-10">
+    <div className="lg:px-32 lg:py-10 p-10">
       <LoginForm />
     </div>
   );

@@ -19,10 +19,13 @@ type RestaurantCardProps = {
 
 const RestaurantCard = ({ restaurant }: RestaurantCardProps) => {
   const gradeTextColor = calculateGradeTextColor(restaurant.grade ?? 0);
-  const { name, grade, description, food_type, formality, id } = restaurant;
+  const { name, grade, description, food_type, formality } = restaurant;
 
   return (
-    <CardLink linkProps={{ href: `/restaurants/${name}` }}>
+    <CardLink
+      linkProps={{ href: `/restaurants/${name}` }}
+      cardProps={{ className: 'h-full' }}
+    >
       <CardHeader className="flex flex-row justify-between">
         <CardTitle className="font-bold text-lg">{name}</CardTitle>
         <CardDescription className={cn('text-slate-500', gradeTextColor)}>
@@ -30,7 +33,7 @@ const RestaurantCard = ({ restaurant }: RestaurantCardProps) => {
         </CardDescription>
       </CardHeader>
       <CardContent>{description}</CardContent>
-      <CardFooter className="flex gap-2">
+      <CardFooter className="flex justify-self-end gap-2">
         <Badge>{food_type}</Badge>
         <Badge>{formality}</Badge>
       </CardFooter>

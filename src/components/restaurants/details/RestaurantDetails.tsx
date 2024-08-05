@@ -6,6 +6,8 @@ import { Restaurant } from '@/types/tables';
 import { calculateGradeTextColor } from '@/utils';
 import RestaurantReviewHistory from './ReviewHistory';
 import AttributeList from './AttributeList';
+import { Suspense } from 'react';
+import ReviewHistorySkeleton from '@/components/ui/icons/skeletons/ReviewHistorySkeleton';
 
 type RestaurantDetailsProps = {
   restaurant: Restaurant;
@@ -29,10 +31,12 @@ const RestaurantDetails = ({ restaurant }: RestaurantDetailsProps) => {
         <AttributeList {...otherAttributes} />
       </div>
       <div className="bg-gray-700 my-3 w-full h-[1px]" />
-      <RestaurantReviewHistory
-        restaurantName={restaurant.name}
-        restaurantId={restaurant.id}
-      />
+      <Suspense fallback={<ReviewHistorySkeleton />}>
+        <RestaurantReviewHistory
+          restaurantName={restaurant.name}
+          restaurantId={restaurant.id}
+        />
+      </Suspense>
     </>
   );
 };
