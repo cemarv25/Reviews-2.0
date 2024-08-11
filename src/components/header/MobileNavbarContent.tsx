@@ -1,4 +1,6 @@
-import Button from '../ui/Button';
+'use client';
+
+import { buttonVariants } from '../ui/Button';
 import Menu from '../ui/icons/Menu';
 import {
   Sheet,
@@ -25,10 +27,8 @@ const MobileNavbarContent = () => {
   return (
     <NavbarContent className="sm:hidden">
       <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
-        <SheetTrigger>
-          <Button>
-            <Menu />
-          </Button>
+        <SheetTrigger className={buttonVariants({ variant: 'default' })}>
+          <Menu />
         </SheetTrigger>
         <SheetContent>
           <SheetHeader>

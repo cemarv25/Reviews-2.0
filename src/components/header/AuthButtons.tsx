@@ -3,7 +3,7 @@
 import { useAuth } from '@/contexts/auth';
 import Link from 'next/link';
 import LoadingSpinner from '@/ui/LoadingSpinner';
-import Button from '@/ui/Button';
+import Button, { buttonVariants } from '@/ui/Button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -27,8 +27,8 @@ const LoggedInButtons = () => {
   return (
     <DropdownMenu>
       <NavbarItem>
-        <DropdownMenuTrigger>
-          <Button size="sm">User</Button>
+        <DropdownMenuTrigger className={buttonVariants({ variant: 'default' })}>
+          User
         </DropdownMenuTrigger>
       </NavbarItem>
       <DropdownMenuContent aria-label="Profile Actions">
@@ -49,13 +49,16 @@ const LoggedOutButtons = () => {
   return (
     <>
       <NavbarItem>
-        <Link href="/login">
-          <Button>Log In</Button>
+        <Link href="/login" className={buttonVariants({ variant: 'default' })}>
+          Log In
         </Link>
       </NavbarItem>
       <NavbarItem>
-        <Link href="/register">
-          <Button variant="ghost">Register</Button>
+        <Link
+          href="/register"
+          className={buttonVariants({ variant: 'default' })}
+        >
+          Register
         </Link>
       </NavbarItem>
     </>
