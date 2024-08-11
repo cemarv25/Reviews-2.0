@@ -1,63 +1,26 @@
-'use client';
-
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import AuthButtons from './AuthButtons';
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from './Navbar';
-import MobileNavbarContent from './MobileNavbarContent';
-import useIsMobile from '@/hooks/useIsMobile';
+import { Navbar, NavbarBrand } from './Navbar';
+import dynamic from 'next/dynamic';
 
-const DesktopNavbarContent = () => {
-  const pathname = usePathname();
-  const isMobile = useIsMobile();
+const MobileNavbarContent = dynamic(() => import('./MobileNavbarContent'), {
+  ssr: false,
+});
+const DesktopNavbarContent = dynamic(() => import('./DesktopNavbarContent'), {
+  ssr: false,
+});
 
-  if (isMobile) {
-    return null;
-  }
-
+const Header = () => {
   return (
-    <>
-      <NavbarContent className="sm:flex hidden">
-        <NavbarItem>
-          <Link
-            href="/restaurants"
-            className={`text-2xl underline decoration-transparent  transition-colors ${
-              pathname.includes('/restaurants')
-                ? 'text-primary hover:decoration-primary'
-                : 'hover:decoration-primary-foreground'
-            } `}
-          >
-            Restaurants
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link
-            href="/dishes"
-            className={`text-2xl underline decoration-transparent  transition-colors ${
-              pathname.includes('/dishes')
-                ? 'text-primary hover:decoration-primary'
-                : 'hover:decoration-primary-foreground'
-            } `}
-          >
-            Dishes
-          </Link>
-        </NavbarItem>
-      </NavbarContent>
-      <AuthButtons className="sm:flex hidden" />
-    </>
+    <Navbar isBordered className="py-2">
+      <NavbarBrand>
+        <Link href="/" className="font-bold text-4xl">
+          Reviews
+        </Link>
+      </NavbarBrand>
+      <DesktopNavbarContent />
+      <MobileNavbarContent />
+    </Navbar>
   );
 };
-
-const Header = () => (
-  <Navbar isBordered className="py-2">
-    <NavbarBrand>
-      <Link href="/" className="font-bold text-4xl">
-        Reviews
-      </Link>
-    </NavbarBrand>
-    <DesktopNavbarContent />
-    <MobileNavbarContent />
-  </Navbar>
-);
 
 export default Header;
